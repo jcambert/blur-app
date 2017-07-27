@@ -7,6 +7,7 @@
   "dependencies": {
     "async": "^2.5.0",
     "bcrypt": "^1.0.2",
+    "each-async": "^1.1.1",
     "ejs": "2.3.4",
     "grunt": "0.4.5",
     "grunt-bower": "^0.21.4",
@@ -23,7 +24,9 @@
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "0.2.4",
     "include-all": "~0.1.6",
+    "node-sass": "^4.5.3",
     "nodemailer": "^4.0.1",
+    "object-assign": "^4.1.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-github": "^1.1.0",
@@ -45,6 +48,7 @@
   "author": "anonymous node/sails user",
   "license": "",
   "devDependencies": {
+    "grunt-angular-templates": "git://github.com/jcambert/grunt-angular-templates",
     "grunt-contrib-sass": "^1.0.0",
     "grunt-sass": "^2.0.0",
     "grunt-sass-injection": "^1.0.3"

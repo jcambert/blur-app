@@ -30,12 +30,12 @@ module.exports = function(grunt) {
 
 
     grunt.registerMultiTask('sass-injection', 'Inject Sass partial files in target', function() {
-        grunt.log.writeln('\n running personnal sass-injection task ' + this.target);
+        //grunt.log.writeln('\n running personnal sass-injection task ' + this.target);
         var self = this;
         self.importFiles = [];
         self.targetfile = this.data.options.target;
 
-        grunt.log.writeln(JSON.stringify(this.data.options.target));
+        //grunt.log.writeln(JSON.stringify(this.data.options.target));
         var opts = this.options({
             removeExtensions: true,
             tag: 'import'
@@ -54,14 +54,9 @@ module.exports = function(grunt) {
                 src = src.replace('.scss', '').replace('.sass', '').replace(el.orig.cwd, '');
             }
             self.importFiles.push('@import "' + src + '";');
-            grunt.log.writeln('Check injection for  dest ' + self.targetfile + ' in src ' + src);
+            //grunt.log.writeln('Check injection for  dest ' + self.targetfile + ' in src ' + src);
         }, this);
-        /* eachAsync(this.files, function(el, i, next) {
-
-             
-
-
-         }.bind(this), this.async());*/
+       
 
         var startTag = '// ' + opts.tag;
         var endTag = "// end" + opts.tag;

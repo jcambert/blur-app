@@ -30,7 +30,8 @@ angular
 
         'BlurAdmin.configuration',
         'BlurAdmin.theme',
-        'BlurAdmin.pages'
+        'BlurAdmin.pages',
+        'BlurAdmin.formBuilder'
     ])
 
 

@@ -5,51 +5,10 @@
 (function () {
   'use strict';
 
-  angular.module('formbuilder', [ ])
-  .config([function(){
+ 
 
-  }])
-  .run(['$templateCache','$rootScope','$window',function($templateCache,$rootScope,$window){
-
-  }])
-  .directive('formioComponent',[function(){
-    return{
-        restrict:'E',
-        replace:true,
-        scope:{
-            formio='?^formio'
-        },
-        templateUrl:function(element,attr){
-            
-        },
-        link:function(scope,element,attr,formioCtrl){
-            if(angular.isDefined(formioCtrl)){
-
-            }else{
-
-            }
-        },
-        controller:['$scope',function($scope){
-            //
-            $scope.isVisible = function(){
-                
-            };
-
-            $scope.isRequired = function(){
-
-            };
-
-            $scope.resetForm = function(){
-
-            };
-
-            $scope.isDisabled = function(){
-
-            }
-        }]
-
-    }
-  }])
+  angular.module('BlurAdmin.formBuilder', ['BlurAdmin.formBuilderCore','BlurAdmin.formBuilderComponents' ])
+ 
   ;
   
 })();
