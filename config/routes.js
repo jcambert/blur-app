@@ -32,9 +32,15 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
-    'get /':'DashboardController.getIndex',
-    '/test':{
-        view: 'test'
+    'get /': {
+        view: 'dashboard'
+
+    },
+    '/test': {
+        view: 'test',
+        locals: {
+            layout: false
+        }
     }
 
     /***************************************************************************

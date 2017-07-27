@@ -6,9 +6,9 @@
  */
 
 module.exports = {
-	getIndex:function(req,res){
+    getIndex: function(req, res) {
         //res.locals.layout='layout';
-        res.view('dashboard',{layout:'layout'});
+        sails.log('Rendering Dashboard');
+        return res.view({ layout: 'layout' });
     }
 };
-
