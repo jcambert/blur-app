@@ -33,7 +33,7 @@
             addGroup:function(name,group){
                 groups[name]=group;
             },
-            register:function(name,component,group){
+            register:function(type,component,group){
                  if (!components[type]) {
                     components[type] = component;
                 }
