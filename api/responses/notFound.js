@@ -22,6 +22,7 @@ module.exports = function notFound (data, options) {
   // Get access to `req`, `res`, & `sails`
   var req = this.req;
   var res = this.res;
+  res.locals.layout=false;
   var sails = req._sails;
 
   // Set status code

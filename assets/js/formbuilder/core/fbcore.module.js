@@ -11,10 +11,7 @@
   .config([function(){
 
   }])
-  /*.run(['$templateCache','$rootScope','$window','fbCoreTemplateDirectory','$log',function($templateCache,$rootScope,$window,fbCoreTemplateDirectory,$log){
-        $templateCache.put('fbcore/component.html',fbCoreTemplateDirectory+'component.html');
-        $log.log('formBuilderCore running');
-  }])*/
+  
     .directive('fbform',[function(){
         return {
             restrict:'E',
