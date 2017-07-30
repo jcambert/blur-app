@@ -23,6 +23,7 @@ module.exports = function(grunt) {
         'sass:devAuth',
 
         'ngtemplates:devFormBuilderCore',
+        'ngtemplates:devFormBuilderComponents',
 
         'copy:dev',
         'coffee:dev'

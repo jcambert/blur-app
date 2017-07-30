@@ -2,65 +2,54 @@
  * @author jc.ambert
  * created on 26.07.2017
  */
-(function () {
-  'use strict';
+(function() {
+    'use strict';
 
- 
 
-  angular.module('BlurAdmin.formBuilderCore', [ ])
-  .config([function(){
 
-  }])
-  
-    .directive('fbform',[function(){
-        return {
-            restrict:'E',
-            replace:true,
-            template:'<div></div>',
-            controller:['$scope',function($scope){
+    angular.module('BlurAdmin.formBuilderCore', [])
+        .config([function() {
 
-            }]
-        }
-    }])
-  .directive('fbComponent',[function(){
-    return{
-        restrict:'E',
-        replace:true,
-        scope:{
-            formio:'?^formio'
-        },
-        templateUrl:function(element,attr){
-            return 'fbcore/component.html';
-        },
-        link:function(scope,element,attr,formioCtrl){
-            if(angular.isDefined(formioCtrl)){
+        }])
 
-            }else{
+    /*
+        .directive('fbComponent', [function() {
+            return {
+                restrict: 'E',
+                replace: true,
+                scope: {
+                    formio: '?^formio'
+                },
+                templateUrl: function(element, attr) {
+                    return 'fbcore/component.html';
+                },
+                link: function(scope, element, attr, formioCtrl) {
+                    if (angular.isDefined(formioCtrl)) {
 
-            }
-        },
-        controller:['$scope',function($scope){
-            //
-            $scope.isVisible = function(){
-                
-            };
+                    } else {
 
-            $scope.isRequired = function(){
+                    }
+                },
+                controller: ['$scope', function($scope) {
+                    //
+                    $scope.isVisible = function() {
 
-            };
+                    };
 
-            $scope.resetForm = function(){
+                    $scope.isRequired = function() {
 
-            };
+                    };
 
-            $scope.isDisabled = function(){
+                    $scope.resetForm = function() {
+
+                    };
+
+                    $scope.isDisabled = function() {
+
+                    }
+                }]
 
             }
-        }]
-
-    }
-  }])
-  ;
-  
+        }]);
+    */
 })();
-
