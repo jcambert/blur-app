@@ -24,8 +24,10 @@ module.exports = function(grunt) {
 
         'ngtemplates:devFormBuilderCore',
         'ngtemplates:devFormBuilderComponents',
-
+        'ngtemplates:devOverlay',
+        'ngtemplates:devAtf',
         'copy:dev',
-        'coffee:dev'
+        'coffee:dev',
+        'clean:sails'
     ]);
 };

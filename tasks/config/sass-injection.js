@@ -56,7 +56,7 @@ module.exports = function(grunt) {
             self.importFiles.push('@import "' + src + '";');
             //grunt.log.writeln('Check injection for  dest ' + self.targetfile + ' in src ' + src);
         }, this);
-       
+
 
         var startTag = '// ' + opts.tag;
         var endTag = "// end" + opts.tag;

@@ -17,7 +17,11 @@
             'BlurAdmin.pages.maps',
             'BlurAdmin.pages.profile',
         ])
-        .config(routeConfig);
+        .config(routeConfig)
+        .run(['$log', function($log) {
+            $log.log('blurAdmin.pages running');
+
+        }]);
 
     /** @ngInject */
     function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
@@ -43,20 +47,20 @@
                 blank: true
             }]
         });
-        /*baSidebarServiceProvider.addStaticItem({
-          title: 'Menu Level 1',
-          icon: 'ion-ios-more',
-          subMenu: [{
-            title: 'Menu Level 1.1',
-            disabled: true
-          }, {
-            title: 'Menu Level 1.2',
+        baSidebarServiceProvider.addStaticItem({
+            title: 'Menu Level 1',
+            icon: 'ion-ios-more',
             subMenu: [{
-              title: 'Menu Level 1.2.1',
-              disabled: true
+                title: 'Menu Level 1.1',
+                disabled: true
+            }, {
+                title: 'Menu Level 1.2',
+                subMenu: [{
+                    title: 'Menu Level 1.2.1',
+                    disabled: true
+                }]
             }]
-          }]
-        });*/
+        });
     }
 
 })();

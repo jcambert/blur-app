@@ -397,4 +397,4 @@
 
     ;
 
-})(angular, lodash);
+})(angular, _);

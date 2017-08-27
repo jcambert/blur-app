@@ -32,9 +32,14 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
-    'get /': {
-        view: 'dashboard'
-
+    'get /': 'PageController.showPage',
+    'get /modules': 'ModuleController.get',
+    'get /flash': 'FlashController.get',
+    'get /login': {
+        view: 'login',
+        locals: {
+            layout: 'layouts/login'
+        }
     },
     '/test': {
         view: 'test',

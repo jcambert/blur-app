@@ -61,7 +61,9 @@
     "angular-xeditable": "~0.5.0",
     "ng-js-tree": "~0.0.7",
     "angular-ui-select": "^0.19.6",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "angular-resource-sails": "^1.2.2",
+    "angular-loading-overlay": "^1.1.1"
   },
   "resolutions": {
     "angular": "~1.5.9",

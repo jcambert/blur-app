@@ -54,6 +54,8 @@ var jsFilesToInject = [
 
     // Dependencies like jQuery, or Angular are brought in here
     'js/**/*.module.js',
+    'js/**/*.provider.js',
+    'js/**/*.service.js',
     'js/theme/theme*.js',
     'js/theme/**/*.js',
     'js/pages/**/*.js',

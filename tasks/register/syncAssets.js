@@ -21,7 +21,8 @@ module.exports = function(grunt) {
 
         'ngtemplates:devFormBuilderCore',
         'ngtemplates:devFormBuilderComponents',
-
+        'ngtemplates:devOverlay',
+        'ngtemplates:devAtf',
         'sync:dev',
         'coffee:dev'
     ]);
