@@ -34,7 +34,8 @@
         'Auth',
         'BlurAdmin.configuration',
         'Atf',
-        'Presence.configuration'
+        'Presence.configuration',
+        'Employee'
     ])
 
 

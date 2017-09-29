@@ -7,8 +7,12 @@
 
 
 
-    angular.module('Presence')
-        
+    angular.module('Employee', [
+        'ui.router',
+        'ModelResource'
+    ])
+
+
 
     ;
 

@@ -18,7 +18,9 @@ module.exports.bootstrap = function(cb) {
     // It's very important to trigger this callback method when you are finished
     // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
     async.series([
-        Employee.seed
+        Employee.seed,
+        Permission.seed,
+        Role.seed,
     ], cb);
     //  async.each([Employee], Seed, cb);
     //  cb();

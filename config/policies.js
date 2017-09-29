@@ -60,7 +60,9 @@ module.exports.policies = {
         'RolePolicy',
         'CriteriaPolicy'
     ],
-
+    SwaggerController:{
+        '*':true
+    },
     AuthController: {
         '*': ['passport']
     },

@@ -57,17 +57,42 @@ angular
 
 .run(['Auth', 'toastr', 'Overlay', '$timeout', '$rootScope', '$window', '$log', function(auth, toastr, overlay, $timeout, $rootScope, $window, $log) {
     $log.log('BlurApp running');
-    auth.me().then(function(result) {
-        if (result) {
-            toastr.success('Welcome ' + $rootScope.user.username);
-        } else {
-            overlay.start();
-            toastr.warning('It seem your are disconnected...');
-            $timeout(function() {
-                $window.location = '/';
-            }, 3000);
-        }
+
+    $rootScope.goBack = function(){$window.history.back();}
+
+    $rootScope.goForward = function(){window.history.forward();}
+
+    function authme(){
+        auth.me().then(function(result) {
+            if (result) {
+                toastr.success('Welcome ' + $rootScope.user.username);
+            } else {
+                overlay.start();
+                toastr.warning('It seem your are disconnected...');
+                $timeout(function() {
+                    $window.location = '/';
+                }, 3000);
+            }
+        });
+    }
+   
+
+    $rootScope.$on('$sailsDisconnected',function(){
+        toastr.error('Vous etes déconnecté du serveur');
+        overlay.start();
     });
+
+    $rootScope.$on('$sailsConnected',function(){
+       authme();
+    });
+
+    $rootScope.$on('$sailsSocketError',function(error){
+        toastr.error(err);
+        overlay.start();
+     });
+
+    authme();
+
 }])
 
 ;

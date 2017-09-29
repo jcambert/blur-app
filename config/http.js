@@ -78,7 +78,34 @@ module.exports.http = {
     // bodyParser: require('skipper')({strict: true})
 
   },
-
+  customMiddleware: function (app) {
+    var swagger = require('sails-custom-swagger-hook');
+    var express = require('express');
+  
+    app.use(swagger.init(express, app, {
+      apiVersion: '1.0',
+      swaggerVersion: '2.0',
+      swaggerURL: '/api/docs',
+      swaggerJSON: '/swagger/doc',
+      basePath: sails.config.appUrl,
+      info: {
+        title: ' App API Documentation',
+        description: 'Full API Test Harness'
+      },
+      custom: {
+        folder: sails.config.appPath + '/assets/docs'
+      },
+      /*apis: [
+        './api/docs/User.yml',
+      ]*/
+    }));
+    sails.on('ready', function() {
+      swagger.sailsGenerate({
+        routes: sails.router._privateRouter.routes,
+        models: sails.models
+      });
+    });
+  },
   /***************************************************************************
   *                                                                          *
   * The number of seconds to cache flat files on disk being served by        *

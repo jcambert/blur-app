@@ -62,5 +62,6 @@ _.merge(exports, {
                 next();
             }
         }
-    ]
+    ],
+    seedData: [{ username: 'admin', email: 'admin@atf-industrie.local' }, { username: 'horloge',  email: 'admin@atf-industrie.local'  }]
 });

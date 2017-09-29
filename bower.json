@@ -1,6 +1,6 @@
 {
-  "name": "blur-app",
-  "description": "a Blur dashboard application based on blur-admin",
+  "name": "ATF Board",
+  "description": "ATF Dashboard adn GPAO",
   "main": "app.js",
   "authors": [
     "Ambert Jean-Christophe"
