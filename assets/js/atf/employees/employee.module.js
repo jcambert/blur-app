@@ -8,6 +8,7 @@
 
 
     angular.module('Employee', [
+        'ui',
         'ui.router',
         'ModelResource'
     ])

@@ -1,18 +1,47 @@
 angular.module('Employee')
-.controller('employeeListController', ['$scope', '$state', 'employees', function($scope, $state, employees) {
+.controller('employeeListController', ['$scope', '$state','modal','toastr', 'employees','Employee', function($scope, $state,modal,toastr, employees,Employee) {
     $scope.employees = employees;
-    $scope.detail = function($event, to, params) {
+    $scope.remove = function(o){
+        modal.open('presence/employee.delete.html',{controller:'employeeDeleteController',resolve:{employee:$scope.employees[o.index]}},
+            function ok(employee){
+                employee.$delete(
+                    function(resp){
+                        toastr.success(employee.username + ' a été supprimé');
+                    },
+                function(resp){
+                    toastr.error(resp);
+                })
+            },
+            function cancel(){}
+        );
+    }
 
-        // If the command key is down, open the URL in a new tab
-        if ($event.metaKey) {
-            var url = $state.href(to, params, { absolute: true });
-            window.open(url, '_blank');
+    $scope.add = function(o){
+        modal.open('presence/employee.add.html',{controller:'employeeAddController',resolve:{employee:new Employee()}},
+            function ok(employee){
+                employee.$save(
+                    function(resp){
+                        toastr.success(employee.username + ' a été ajouté');
+                    },
+                function(resp){
+                    toastr.error(resp);
+                })
+            },
+            function cancel(){}
+        );
+    }
+}])
 
-        } else {
-            $state.go(to, params);
-        }
+.controller('employeeDeleteController',['$scope','$uibModalInstance','employee',function($scope,$uibModalInstance,employee){
+    $scope.employee = employee;
+    $scope.ok = function(){$uibModalInstance.close();}
+    $scope.cancel = function(){$uibModalInstance.dismiss();}
+}])
 
-    };
+.controller('employeeAddController',['$scope','$uibModalInstance','employee',function($scope,$uibModalInstance,employee){
+    $scope.employee = employee;
+    $scope.ok = function(){$uibModalInstance.close($scope.employee);}
+    $scope.cancel = function(){$uibModalInstance.dismiss();}
 }])
 
 .controller('employeeDetailController', ['$scope', '$state', '$stateParams', function($scope, $state, $stateParams) {

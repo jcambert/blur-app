@@ -18,3 +18,26 @@ angular.module('ModelResource',['sailsResource'])
 
 
 ;
+
+angular.module('ui',[ 'ngAnimate', 'ui.bootstrap',])
+.service('modal',['$uibModal',function($uibModal){ 
+    this.open = function(templateUrl,options,ok,cancel){
+        if(angular.isUndefined(options)) options={};
+        if(angular.isUndefined(ok) || !angular.isFunction(ok))ok=function(){};
+        if(angular.isUndefined(cancel) || !angular.isFunction(cancel))cancel=function(){};
+        var modalInstance = $uibModal.open({
+            animation: true,
+            controller:options.controller,
+            backdrop:options.backdrop || false,
+            keyboard:options.keyboard || false,
+            templateUrl: templateUrl,
+            size: options.size || 'lg',
+            resolve:options.resolve || {}
+          });
+        modalInstance.result.then(function (selectedItem) {
+           ok(selectedItem);
+          }, function () {
+            cancel();
+          });
+    }
+}])

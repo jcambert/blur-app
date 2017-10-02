@@ -25,10 +25,10 @@
                         }]
                     },
                     
-                                        sidebarMeta: {
-                                            icon: 'ion-person-stalker',
-                                            order: 0,
-                                        },
+                    sidebarMeta: {
+                        icon: 'ion-person-stalker',
+                        order: 0,
+                    },
                 })
                 .state('employee.list', {
                     //abstract: true,
@@ -45,7 +45,7 @@
                         order: 0,
                     },
 
-                })
+                })/*
                 .state('employee.detail', {
                     url: '/:id',
                     views: {
@@ -78,7 +78,7 @@
                 .state('employee.add',{
                     url:'/add',
                     views:{
-                        '':{
+                        'detail':{
                             template:'<p>Add</p>',
                             controller:'EmployeeAddController',
                             resolve:{
@@ -87,12 +87,8 @@
                                 }]
                             }
                         }
-                    },
-                    title:'Ajouter un employee',
-                    sidebarMeta: {
-                        order: 0,
-                    },
-                })
+                    }
+                })*/
                 ;
                 $urlRouterProvider.when('/employee', '/employee/list');
             console.log('Employee Module configured');

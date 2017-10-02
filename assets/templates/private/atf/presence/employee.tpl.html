@@ -1,9 +1,12 @@
 <div class="widgets">
 
     <div class="row">
-        <div class="col-lg-6 col-md-12">
+        <div class="col-md-12">
             <div ba-panel ba-panel-title="Employees" ba-panel-class="with-scroll">
                 <div class="horizontal-scroll responsive">
+                    <div class="add-row-editable-table">
+                        <button class="btn btn-primary" ng-click="add()">Ajouter</button>
+                    </div>
                     <table class="table table-hover">
                         <thead>
                             <tr class="black-muted-bg">
@@ -13,20 +16,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="employee in employees track by $index" ng-click="detail($event, 'employee.detail',{id:$index})">
+                            <tr ng-repeat="employee in employees track by $index" ng-click="go($event, 'employee.detail',{id:$index})">
                                 <td class="align-right" ng-bind="employee.fullname"></td>
                                 <td class="align-right" ng-bind="employee.badge"></td>
+                                <td>
+                                    <div class="buttons" >
+                                        <button class="btn btn-primary editable-table-button btn-xs" ng-click="go($event,'employee.edit',{id:$index})">Edit</button>
+                                        <button class="btn btn-danger editable-table-button btn-xs" data-toggle="modal" ng-click="remove({id:$index})">Delete</button>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-12">
-            <div ba-panel ba-panel-title="Detail" ba-panel-class="with-scroll">
-                <div ui-view="detail"></div>
-            </div>
-        </div>
+        
     </div>
 
 

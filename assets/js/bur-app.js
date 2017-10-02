@@ -55,8 +55,20 @@ angular
 
 .filter('trust', trustHtml)
 
-.run(['Auth', 'toastr', 'Overlay', '$timeout', '$rootScope', '$window', '$log', function(auth, toastr, overlay, $timeout, $rootScope, $window, $log) {
+.run(['Auth', 'toastr', 'Overlay', '$timeout', '$rootScope', '$window','$modalStack', '$log', function(auth, toastr, overlay, $timeout, $rootScope, $window,$modalStack , $log) {
     $log.log('BlurApp running');
+
+    $rootScope.go = function($event, to, params) {
+        // If the command key is down, open the URL in a new tab
+        if ($event.metaKey) {
+            var url = $state.href(to, params, { absolute: true });
+            window.open(url, '_blank');
+
+        } else {
+            $state.go(to, params);
+        }
+
+    };
 
     $rootScope.goBack = function(){$window.history.back();}
 
@@ -79,6 +91,7 @@ angular
 
     $rootScope.$on('$sailsDisconnected',function(){
         toastr.error('Vous etes déconnecté du serveur');
+        $modalStack.dismissAll('close');
         overlay.start();
     });
 
