@@ -55,7 +55,7 @@ angular
 
 .filter('trust', trustHtml)
 
-.run(['Auth', 'toastr', 'Overlay', '$timeout', '$rootScope', '$window','$modalStack', '$log', function(auth, toastr, overlay, $timeout, $rootScope, $window,$modalStack , $log) {
+.run(['Auth', 'toastr', 'Overlay', '$timeout', '$rootScope', '$window','$uibModalStack', '$log', function(auth, toastr, overlay, $timeout, $rootScope, $window,$modalStack , $log) {
     $log.log('BlurApp running');
 
     $rootScope.go = function($event, to, params) {

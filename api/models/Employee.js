@@ -16,10 +16,19 @@ module.exports = {
                 return uuid.v4();
             }
         },
-        fullname: {
+        firstname: {
             type: 'string',
             required: true,
             unique: true
+        },
+        lastname: {
+            type: 'string',
+            required: true,
+            unique: true
+        },
+        email:{
+            type : 'email',
+
         },
         badge: {
             type: 'integer',

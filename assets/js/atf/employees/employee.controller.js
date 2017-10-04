@@ -1,12 +1,19 @@
 angular.module('Employee')
-.controller('employeeListController', ['$scope', '$state','modal','toastr', 'employees','Employee', function($scope, $state,modal,toastr, employees,Employee) {
+.controller('employeeListController', ['$scope', '$rootScope', '$state','modal','toastr', 'employees','Employee', function($scope, $rootScope, $state,modal,toastr, employees,Employee) {
+    
+    $rootScope.$on('$sailsResourceAddedTo',function(event,message){
+        console.dir(message);
+    });
+    $rootScope.$on('$sailsResourceRemovedFrom',function(event,message){
+        console.dir(message);
+    });
     $scope.employees = employees;
     $scope.remove = function(o){
         modal.open('presence/employee.delete.html',{controller:'employeeDeleteController',resolve:{employee:$scope.employees[o.index]}},
             function ok(employee){
                 employee.$delete(
                     function(resp){
-                        toastr.success(employee.username + ' a été supprimé');
+                        toastr.success(employee.firstname+' '+employee.lastname + ' a été supprimé');
                     },
                 function(resp){
                     toastr.error(resp);
@@ -21,7 +28,11 @@ angular.module('Employee')
             function ok(employee){
                 employee.$save(
                     function(resp){
-                        toastr.success(employee.username + ' a été ajouté');
+                        console.dir(resp);
+                        if(resp.status==200)
+                            toastr.success(employee.firstname+' '+employee.lastname + ' a été ajouté');
+                        else    
+                            toastr.error(resp.details);
                     },
                 function(resp){
                     toastr.error(resp);

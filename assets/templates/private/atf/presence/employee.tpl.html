@@ -10,14 +10,16 @@
                     <table class="table table-hover">
                         <thead>
                             <tr class="black-muted-bg">
-                                <th class="align-right">Username</th>
+                                <th class="align-right">Nom</th>
+                                <th class="align-right">Prenom</th>
                                 <th class="align-right">Badge</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="employee in employees track by $index" ng-click="go($event, 'employee.detail',{id:$index})">
-                                <td class="align-right" ng-bind="employee.fullname"></td>
+                                <td class="align-right" ng-bind="employee.firstname"></td>
+                                <td class="align-right" ng-bind="employee.lastname"></td>
                                 <td class="align-right" ng-bind="employee.badge"></td>
                                 <td>
                                     <div class="buttons" >
