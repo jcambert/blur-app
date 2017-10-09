@@ -10,7 +10,7 @@ angular
         needlogin: true,
         enablevisitor: false,
         loginWith: ['local', 'google', 'twitter', 'linkedin'],
-
+        id: 'BlurApp'
 
     });
 
@@ -55,7 +55,7 @@ angular
 
 .filter('trust', trustHtml)
 
-.run(['Auth', 'toastr', 'Overlay', '$timeout', '$rootScope', '$window','$uibModalStack', '$log', function(auth, toastr, overlay, $timeout, $rootScope, $window,$modalStack , $log) {
+.run(['Auth', 'toastr', 'Overlay', '$timeout', '$rootScope', '$window', '$uibModalStack', '$log', '$state', 'appConfig', function(auth, toastr, overlay, $timeout, $rootScope, $window, $modalStack, $log, $state, appConfig) {
     $log.log('BlurApp running');
 
     $rootScope.go = function($event, to, params) {
@@ -70,14 +70,18 @@ angular
 
     };
 
-    $rootScope.goBack = function(){$window.history.back();}
+    $rootScope.goBack = function() { $window.history.back(); }
 
-    $rootScope.goForward = function(){window.history.forward();}
+    $rootScope.goForward = function() { window.history.forward(); }
 
-    function authme(){
+    function authme() {
         auth.me().then(function(result) {
             if (result) {
                 toastr.success('Welcome ' + $rootScope.user.username);
+                io.socket.get('/welcome', { appid: appConfig.id }, function(resData, jwres) {
+                    toastr.success('You are now registered to realtime update');
+                    console.dir(resData);
+                });
             } else {
                 overlay.start();
                 toastr.warning('It seem your are disconnected...');
@@ -87,22 +91,36 @@ angular
             }
         });
     }
-   
 
-    $rootScope.$on('$sailsDisconnected',function(){
+
+    $rootScope.$on('$sailsDisconnected', function() {
         toastr.error('Vous etes déconnecté du serveur');
         $modalStack.dismissAll('close');
         overlay.start();
     });
 
-    $rootScope.$on('$sailsConnected',function(){
-       authme();
+    $rootScope.$on('$sailsConnected', function() {
+
+        io.socket.on('welcome', function(data) {
+            console.log(data.greeting);
+        });
+
+        authme();
+
     });
 
-    $rootScope.$on('$sailsSocketError',function(error){
+    $rootScope.$on('$sailsSocketError', function(error) {
         toastr.error(err);
         overlay.start();
-     });
+    });
+
+    $rootScope.$on('$routeChangeStart', function(event, next, current) {
+        if (!current) {
+            // handle session start event
+            alert('refresh');
+        }
+
+    });
 
     authme();
 

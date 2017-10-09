@@ -18,23 +18,49 @@ module.exports = {
         },
         firstname: {
             type: 'string',
-            required: true,
-            unique: true
+            required: true
         },
         lastname: {
             type: 'string',
-            required: true,
-            unique: true
+            required: true
         },
-        email:{
-            type : 'email',
+        email: {
+            type: 'email',
 
         },
         badge: {
             type: 'integer',
             required: true,
             unique: true
-        }
+        },
+        lock: {
+            type: 'boolean',
+            required: true,
+            defaultsTo: false
+        },
+        lockby: {
+            type: 'string',
+
+        },
+        fullname: function() {
+            return this.firstname + ' ' + this.lastname;
+        },
     },
-    seedData: [{ fullname: 'ambert jc', badge: 1 }, { fullname: 'ambert maryline', badge: 10 }]
+
+    seedData: [{ firstname: 'ambert ', lastname: 'jc', badge: 1 }, { firstname: 'ambert', lastname: 'maryline', badge: 10 }],
+    afterCreate: function(entry, cb) {
+        sails.log.verbose('A new Employee was added:', entry);
+        sails.sockets.broadcast('BlurApp', 'employee', entry);
+        cb();
+    },
+    afterDelete: function(entry, cb) {
+        sails.log.verbose('A Employee was deleted:', entry);
+        sails.sockets.broadcast('BlurApp', 'employee', entry);
+        cb();
+    },
+    afterUpdate: function(entry, cb) {
+        sails.log.verbose('A Employee was updated:', entry);
+        sails.sockets.broadcast('BlurApp', 'employee', entry);
+        cb();
+    }
 };

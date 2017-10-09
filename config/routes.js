@@ -46,6 +46,63 @@ module.exports.routes = {
         locals: {
             layout: false
         }
+    },
+    'GET /welcome': function(req, res, next) {
+        if (req.isSocket && req.method == 'GET') {
+            _.forEach(sails.models, function(model) {
+                model.watch(req.socket);
+
+            });
+            sails.sockets.join(req.socket, req.params.appid);
+            //Article.watch(req.socket);
+            sails.sockets.broadcast(req.params.appid, 'welcome', { greeting: 'Hola!' });
+            return res.json({ message: 'Welcome' });
+        }
+    },
+
+    'PUT /lock/employee/:id': function(req, res, next) {
+
+        if (req.isSocket && req.method == 'PUT') {
+            // var model = sails.models[req.params['model']];
+            var id = req.params['id'];
+            User.findOne({ id: req.session.passport.user }).exec(
+                function(err, user) {
+                    if (err) return res.badRequest();
+                    if (user == null) return res.badRequest();
+                    Employee.findOne({ id: id }).exec(function(err, entity) {
+                        if (err) return res.badRequest();
+                        entity.lock = true;
+                        entity.lockby = user.username;
+                        entity.save(function() {
+                            Employee.publishUpdate(id, { lock: { lock: true, lockby: user.username } }, req);
+                            return res.ok();
+                        });
+                    });
+                }
+            );
+
+
+        } else
+            return res.badRequest();
+    },
+    'PUT /unlock/employee/:id': function(req, res, next) {
+        if (req.isSocket && req.method == 'PUT') {
+            // var model = sails.models[req.params['model']];
+            var id = req.params['id'];
+            Employee.findOne({ id: id }).exec(function(err, entity) {
+                if (err) return res.badRequest();
+                var old = entity.lockby;
+                entity.lock = false;
+                entity.lockby = "";
+                entity.save(function() {
+                    //model.publishUpdate(id, req);
+                    Employee.publishUpdate(id, { lock: { lock: false, lockby: old } }, req);
+                    return res.ok();
+                });
+            });
+
+        } else
+            return res.badRequest();
     }
 
     /***************************************************************************

@@ -2,9 +2,9 @@
     <h3 class="modal-title" id="modal-title">Suppression d'un employee</h3>
 </div>
 <div class="modal-body" id="modal-body">
-   Voulez-vous vraiment supprimer {{employee.username}}
+    Voulez-vous vraiment supprimer {{employee.firstname}} {{employee.lastname}}
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="addOk()">Oui</button>
-    <button class="btn btn-warning" type="button" ng-click="addCancel()">Non</button>
+    <button class="btn btn-primary" type="button" ng-click="ok()">Oui</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Non</button>
 </div>
