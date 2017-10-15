@@ -12,6 +12,11 @@ angular.module('ModelResource', ['sailsResource'])
     return res('Permission');
 }])
 
+
+.factory('Presence', ['sailsResource', function(res) {
+    return res('Presence');
+}])
+
 .factory('Employee', ['sailsResource', 'appConfig', function(res, appConfig) {
     return res('employee', {
         'lock': {

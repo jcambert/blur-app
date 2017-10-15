@@ -31,7 +31,7 @@ angular.module('Employee')
                         msg = model.firstname + ' ' + model.lastname + ' a été bloqué par ' + message.data.lock.lockby;
                     else if (!message.data.lock.lock)
                     msg = model.firstname + ' ' + model.lastname + ' a été débloqué par ' + message.data.lock.lockby;
-                $scope.$apply();
+                //$scope.$apply();
                 toastr.success(msg);
             }
         });

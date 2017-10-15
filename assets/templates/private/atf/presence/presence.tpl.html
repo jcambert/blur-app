@@ -1,0 +1,81 @@
+<div class="widgets">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div ba-panel ba-panel-title="Employees" ba-panel-class="with-scroll">
+                <div class="horizontal-scroll responsive">
+                    <div class="add-row-editable-table">
+                        <button class="btn btn-primary" ng-click="add()">Ajouter</button>
+                    </div>
+
+                    <table class="table" st-table="smartTableData">
+                        <thead>
+                            <tr class="sortable ">
+                                <th class="table-id" st-sort="id" st-sort-default="true">#</th>
+                                <th st-sort="firstName">First Name</th>
+                                <th st-sort="lastName">Last Name</th>
+                                <th st-sort="username">Username</th>
+                                <th st-sort="email">Email</th>
+                                <th st-sort="age">Age</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th><input st-search="firstName" placeholder="Search First Name" class="input-sm form-control search-input" type="search" /></th>
+                                <th><input st-search="lastName" placeholder="Search Last Name" class="input-sm form-control search-input" type="search" /></th>
+                                <th><input st-search="username" placeholder="Search Username" class="input-sm form-control search-input" type="search" /></th>
+                                <th><input st-search="email" placeholder="Search Email" class="input-sm form-control search-input" type="search" />
+                                </th>
+                                <th><input st-search="age" placeholder="Search Age" class="input-sm form-control search-input" type="search" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in smartTableData">
+                                <td class="table-id">{{item.id}}</td>
+                                <td>{{item.firstName}}</td>
+                                <td>{{item.lastName}}</td>
+                                <td>{{item.username}}</td>
+                                <td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>
+                                <td>{{item.age}}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="black-muted-bg">
+                                <th class="align-right">Nom</th>
+                                <th class="align-right">Prenom</th>
+                                <th class="align-right">Badge</th>
+                                <th class="align-right">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="employee in employees track by $index">
+                                <td class="align-right" ng-bind="employee.firstname"></td>
+                                <td class="align-right" ng-bind="employee.lastname"></td>
+                                <td class="align-right" ng-bind="employee.badge"></td>
+                                <td>
+                                    <div class="buttons">
+                                        <button class="btn btn-primary editable-table-button btn-xs" ng-click="edit({index:$index})" ng-disabled="employee.lock">Edit</button>
+                                        <button class="btn btn-danger editable-table-button btn-xs" data-toggle="modal" ng-disabled="employee.lock" ng-click="remove({index:$index})">Delete</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

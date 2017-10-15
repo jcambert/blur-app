@@ -8,6 +8,6 @@ var _ = require('lodash');
 module.exports = {
     get: function(req, res) {
         sails.log.verbose('Get Modules for user:');
-        return res.jsonx({ app: 'BlurAdmin', modules: ['BlurAdmin.pages', 'Presence'] });
+        return res.jsonx({ app: 'BlurAdmin', modules: ['BlurAdmin.pages', 'Rh'] });
     }
 };
