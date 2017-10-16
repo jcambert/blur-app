@@ -7,13 +7,12 @@
 
 
 
-    angular.module('Rh', [
+    angular.module('Pointage', [
         'ui',
         'ui.router',
         'ModelResource',
         'Employee',
-        'Presence',
-        'Pointage'
+        'ds.clock'
     ])
 
 

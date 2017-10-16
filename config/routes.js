@@ -103,7 +103,8 @@ module.exports.routes = {
 
         } else
             return res.badRequest();
-    }
+    },
+    'GET /employee/bybadge/:badge' : 'EmployeeController.bybadge',
 
     /***************************************************************************
      *                                                                          *

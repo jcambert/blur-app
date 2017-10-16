@@ -50,7 +50,18 @@
                     icon: 'ion-ios-alarm',
                     order: 1,
                 },
-            });
+            })
+            .state('rh.pointage',{
+                url:'/pointage',
+                templateUrl:'pointage/pointage.html',
+                controller:'pointageController',
+                title:'Pointage',
+                sidebarMeta: {
+                    icon: 'ion-clock',
+                    order: 2,
+                },
+            })
+            ;
             $urlRouterProvider.when('/rh', '/rh/employee');
             console.log('Rh Module configured');
         }]);

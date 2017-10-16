@@ -25,6 +25,16 @@ module.exports = {
                 return res.badRequest(err);
             });
     },
+    bybadge:function(req,res){
+        var badge = req.params['badge'];
+        Employee.findOne({badge:badge})
+            .then(function(employee){
+                return res.json(employee);
+            })
+            .catch(function(err){
+                return res.badRequest(err);
+            })
+    },
     lock: function(req, res) {
         if (req.isSocket && req.method == 'POST') {
 

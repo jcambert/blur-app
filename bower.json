@@ -63,7 +63,8 @@
     "angular-ui-select": "^0.19.6",
     "lodash": "^4.17.4",
     "angular-resource-sails": "^1.2.2",
-    "angular-loading-overlay": "^1.1.1"
+    "angular-loading-overlay": "^1.1.1",
+    "angular-ui-clock": "^0.7.0"
   },
   "resolutions": {
     "angular": "~1.5.9",

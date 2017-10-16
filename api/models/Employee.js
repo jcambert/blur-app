@@ -16,11 +16,11 @@ module.exports = {
                 return uuid.v4();
             }
         },
-        firstname: {
+        nom: {
             type: 'string',
             required: true
         },
-        lastname: {
+        prenom: {
             type: 'string',
             required: true
         },
@@ -43,11 +43,11 @@ module.exports = {
 
         },
         fullname: function() {
-            return this.firstname + ' ' + this.lastname;
+            return this.nom + ' ' + this.prenom;
         },
     },
 
-    seedData: [{ firstname: 'ambert ', lastname: 'jc', badge: 1 }, { firstname: 'ambert', lastname: 'maryline', badge: 10 }],
+    seedData: [{ nom: 'ambert ', prenom: 'jc', badge: 1 }, { nom: 'ambert', prenom: 'maryline', badge: 10 }],
     afterCreate: function(entry, cb) {
         sails.log.verbose('A new Employee was added:', entry);
         sails.sockets.broadcast('BlurApp', 'employee', entry);

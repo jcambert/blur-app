@@ -7,7 +7,7 @@ angular.module('Employee')
                 var model = _.find($scope.employees, function(e) { return e.id == message.id; });
 
                 console.dir(message);
-                toastr.success(model.firstname + ' ' + model.lastname + ' a été creer');
+                toastr.success(model.nom + ' ' + model.prenom + ' a été creer');
             }
 
         });
@@ -16,7 +16,7 @@ angular.module('Employee')
                 var model = _.find($scope.employees, function(e) { return e.id == message.id; });
                 console.dir(message);
                 // var employee = message.data;
-                toastr.success(model.firstname + ' ' + model.lastname + ' a été supprimé');
+                toastr.success(model.nom + ' ' + model.prenom + ' a été supprimé');
             }
             console.dir(message);
         });
@@ -25,12 +25,12 @@ angular.module('Employee')
                 var model = _.find($scope.employees, { 'id': message.id });
                 console.dir(message);
                 //var employee = message.data;
-                var msg = model.firstname + ' ' + model.lastname + ' a été modifié';
+                var msg = model.nom + ' ' + model.prenom + ' a été modifié';
                 if (angular.isDefined(message.data.lock) && angular.isObject(message.data.lock))
                     if (message.data.lock.lock)
-                        msg = model.firstname + ' ' + model.lastname + ' a été bloqué par ' + message.data.lock.lockby;
+                        msg = model.nom + ' ' + model.prenom + ' a été bloqué par ' + message.data.lock.lockby;
                     else if (!message.data.lock.lock)
-                    msg = model.firstname + ' ' + model.lastname + ' a été débloqué par ' + message.data.lock.lockby;
+                    msg = model.nom + ' ' + model.prenom + ' a été débloqué par ' + message.data.lock.lockby;
                 //$scope.$apply();
                 toastr.success(msg);
             }

@@ -42,6 +42,11 @@ angular.module('ModelResource', ['sailsResource'])
                 console.dir(ret);
                 return ret;
             }
+        },
+        'bybadge':{
+            method:'GET',
+            url:'/employee/badge/:badge',
+            params:{badge:'@badge'}
         }
     });
 }])
