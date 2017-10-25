@@ -54,8 +54,8 @@
             .state('rh.pointage',{
                 url:'/pointage',
                 templateUrl:'pointage/pointage.html',
-                controller:'pointageController',
-                title:'Pointage',
+                //controller:'pointageController',
+                title:'Rh / Pointage',
                 sidebarMeta: {
                     icon: 'ion-clock',
                     order: 2,

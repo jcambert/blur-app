@@ -35,7 +35,7 @@ module.exports = {
                 return res.badRequest(err);
             })
     },
-    lock: function(req, res) {
+   /* lock: function(req, res) {
         if (req.isSocket && req.method == 'POST') {
 
             User.findOne({ id: req.session.passport.user }).exec(
@@ -56,5 +56,5 @@ module.exports = {
         } else
             return res.badRequest();
 
-    }
+    }*/
 };
