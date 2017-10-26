@@ -3,7 +3,7 @@
 <div class="widgets" ng-controller="pointageController">
     
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
 
           <div
               ba-panel
@@ -13,15 +13,11 @@
                 
                 <div class="input-group">
                     <span class="input-group-addon input-group-addon-primary addon-left" id="basic-addon1">@</span>
-                    <input type="number" class="form-control with-primary-addon" placeholder="Badge" aria-label="Badge" ng-model="badge" >
+                    <input type="number" class="form-control with-primary-addon" placeholder="Badge" aria-label="Badge" ng-model="badge.badge" ng-return="retrieve()">
                 </div>
                 
                 <div class="input-group" ng-if="employee">
-                    <input type="text" class="form-control with-warning-addon" placeholder="Nom" aria-label="Nom" ng-model="employee.nom" ng-disabled="true">
-                </div>
-                
-                <div class="input-group" ng-if="employee">
-                    <input type="text" class="form-control with-success-addon" placeholder="Prenom" aria-label="Prenom" ng-model="employee.prenom" ng-disabled="true">
+                    <label>{{employee.nom}} {{employee.prenom}}</label>
                 </div>
                 
                 
@@ -40,7 +36,19 @@
             </div>
             
         </div>
+
+        <div class="col-md-3"> 
+                <div
+                    ba-panel
+                    ba-panel-title="Pointages"
+                    ba-panel-class="with-scroll">
+                    <div>
+                        <ng-include src="table"></ng-include>
+                    </div>
+                </div>
+            </div>
       </div>
-    
+        
+    </div>
     </div>
     

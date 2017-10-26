@@ -1,0 +1,42 @@
+<div class="horizontal-scroll">
+    <div class="form-group select-page-size-wrap ">
+        <label>Lignes par page
+        <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]"
+        </select>
+        </label>
+    </div>
+    <table class="table" st-table="smartTableData">
+        <thead>
+        <tr class="sortable ">
+        <th class="table-id" st-sort="date" st-sort-default="true">Date</th>-->
+        <th st-sort="heureEntree">Heure Entree</th>
+        <th st-sort="HeureSortie">Heure Sortie</th>
+        </tr>
+        <tr>
+        <th><input st-search="date" placeholder="Date" class="input-sm form-control search-input"
+                    type="search"/></th>    
+        <th><input st-search="heureEntree" placeholder="Heure Entree" class="input-sm form-control search-input"
+                    type="search"/></th>
+        <th><input st-search="HeureSortie" placeholder="Heure Sortie" class="input-sm form-control search-input"
+                    type="search"/></th>
+        
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in presences">
+        <!--<td class="table-id">{{item.id}}</td>-->
+        <td>{{item.heureEntree | date : 'd/M/y' }}</td>
+        <td>{{item.heureEntree  | date : 'h:m' }}</td>
+        <td>{{item.HeureSortie  | date : 'h:m' }}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+        <td colspan="6" class="text-center">
+            <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+        </td>
+        </tr>
+        </tfoot>
+    </table>
+    </div>

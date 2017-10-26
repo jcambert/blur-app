@@ -14,7 +14,14 @@ angular.module('ModelResource', ['sailsResource'])
 
 
 .factory('Presence', ['sailsResource', function(res) {
-    return res('Presence');
+    return res('Presence',{
+        'byemployee':{
+            isArray:true,
+            method:'GET',
+            url:'/presence/employe/:employee',
+            params: {employee:'@employee'}
+        }
+    });
 }])
 
 .factory('Employee', ['sailsResource', 'appConfig', function(res, appConfig) {

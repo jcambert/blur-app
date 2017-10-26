@@ -14,6 +14,24 @@ angular
 
     });
 
+angular.module('DashboardApplication',[
+    'BlurAdmin'
+])
+.controller('mainCtrl', MainController)
+.directive('ngReturn',function(){
+    return function(scope, element, attrs) {
+        element.bind("keydown keypress", function(event) {
+            if(event.which === 13) {
+                scope.$apply(function(){
+                    scope.$eval(attrs.ngReturn, {'event': event});
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+})
+;
 angular
     .module('BlurAdmin', [
         'ngAnimate',
@@ -51,7 +69,7 @@ angular
             progressBar: true,
         });
     }])
-    .controller('mainCtrl', MainController)
+    
 
 .filter('trust', trustHtml)
 
@@ -127,7 +145,7 @@ angular
 }])
 
 ;
-console.dir(angular.module('BlurAdmin'));
+//console.dir(angular.module('BlurAdmin'));
 /** @ngInject */
 function MainController($scope, $rootScope, $timeout, $log, $window, Auth, toastr, appConfig, Overlay) {
     $scope.config = appConfig;

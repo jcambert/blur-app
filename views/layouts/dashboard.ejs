@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- ng-app was injected  in $(document).ready() below -->
 <html>
 
 <head>
@@ -358,14 +359,14 @@
         <script>
             $(document).ready(function() {
                 /* Code that you want after document ready */
-                console.log('Document ready');
+                //console.log('Document ready');
                 $.get('/modules', function(data) {
-                    console.dir(data);
+                    //console.dir(data);
                     var fn = angular.module(data.app).requires;
                     _.forEach(data.modules, function(module) {
                         fn.push(module);
                     });
-                    console.dir(fn);
+                    //console.dir(fn);
                     angular.element(function() {
                         angular.bootstrap(document, [data.app]);
                         console.log('Angular application is bootstraped');

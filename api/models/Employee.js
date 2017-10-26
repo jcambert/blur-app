@@ -47,7 +47,7 @@ module.exports = {
         },
     },
 
-    seedData: [{ nom: 'ambert ', prenom: 'jc', badge: 1 }, { nom: 'ambert', prenom: 'maryline', badge: 10 }],
+    seedData: [{id:'be4b0414-2d96-42cf-98c3-3288ad361ae4', nom: 'ambert ', prenom: 'jc', badge: 1 }, { id:'b1cfb70a-c13f-4fce-b57a-91ca34ccd350', nom: 'ambert', prenom: 'maryline', badge: 10 }],
     afterCreate: function(entry, cb) {
         sails.log.verbose('A new Employee was added:', entry);
         sails.sockets.broadcast('BlurApp', 'employee', entry);

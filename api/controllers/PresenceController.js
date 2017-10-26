@@ -12,5 +12,12 @@ module.exports = {
             return res.json(presences);
 
         })
+    },
+    findByEmployee : function(req,res){
+        var emp = req.params['employee'];
+        return Presence.find({employee:emp}).sort('heureEntree desc').exec(function(err,presences){
+            if (err) return res.serverError(err);
+            return res.json(presences);
+        })
     }
 };
