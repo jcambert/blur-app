@@ -33,6 +33,10 @@ module.exports = {
             required: true,
             unique: true
         },
+        presences:{
+            collection:'presence',
+            via:'employee'
+        },
         lock: {
             type: 'boolean',
             required: true,

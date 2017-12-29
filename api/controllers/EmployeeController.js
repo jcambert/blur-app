@@ -35,6 +35,14 @@ module.exports = {
                 return res.badRequest(err);
             })
     },
+    withpresence:function(req,res){
+        var badge = req.params['badge'];
+        Employee.findOne({badge:badge}).populate('presences',{sort:'heureEntree desc',limit:5})
+            .then(function(employee){
+                return res.json(employee);
+            })
+            .catch(function(err){return res.badRequest(err);})
+    }
    /* lock: function(req, res) {
         if (req.isSocket && req.method == 'POST') {
 

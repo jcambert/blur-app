@@ -76,6 +76,9 @@ module.exports.policies = {
     ModuleController: {
         '*': true
     },
+    TimeController:{
+        '*': true
+    },
     //permit anybody to create its user
     UserController: {
         create: true,

@@ -20,6 +20,9 @@
                     <label>{{employee.nom}} {{employee.prenom}}</label>
                 </div>
                 
+                <div class="input-group" ng-if="employee">
+                    <button type="button" class="btn" ng-class="wantout?'btn-success':'btn-danger'" ng-click="addPresence()">{{wantout?"Sortir":"Entrer"}}</button>
+                </div>
                 
             </div>
           </div>
@@ -37,7 +40,7 @@
             
         </div>
 
-        <div class="col-md-3"> 
+        <div class="col-md-6"> 
                 <div
                     ba-panel
                     ba-panel-title="Pointages"

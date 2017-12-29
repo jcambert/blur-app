@@ -105,8 +105,12 @@ module.exports.routes = {
             return res.badRequest();
     },
     'GET /employee/badge/:badge' : 'EmployeeController.bybadge',
+    'GET /employeewithpresence/:badge' : 'EmployeeController.withpresence',
     'GET /presence/employe/:employee' : 'PresenceController.findByEmployee',
+    //'POST /presence/add/:id' : 'PresenceController.add',
+    'GET /now' : 'TimeController.now'
     
+
     /***************************************************************************
      *                                                                          *
      * Custom routes here...                                                    *

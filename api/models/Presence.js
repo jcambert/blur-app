@@ -36,9 +36,30 @@ module.exports = {
         },*/
         employee: {
             model: 'employee'
+        },
+        injected:{
+            type:'boolean',
+            defaultsTo:false
         }
     },
-    seedData: [ { employee:'b1cfb70a-c13f-4fce-b57a-91ca34ccd350', heureEntree:new moment("08:00",'HHm:mm').toDate(), heureSortie:new moment("18:00",'HHm:mm').toDate()}],
+    seedData: [ { employee:'b1cfb70a-c13f-4fce-b57a-91ca34ccd350', heureEntree:new moment("08:00",'HHm:mm').toDate(), heureSortie:new moment("18:00",'HHm:mm').toDate()},
+                 { employee:'be4b0414-2d96-42cf-98c3-3288ad361ae4', heureEntree:new moment("08:00",'HHm:mm').toDate()}
+            ],
+    afterCreate: function(entry, cb) {
+        sails.log.verbose('A new Presence was added:', entry);
+        sails.sockets.broadcast('BlurApp', 'presence', entry);
+        cb();
+    },
+    afterDelete: function(entry, cb) {
+        sails.log.verbose('A Presence was deleted:', entry);
+        sails.sockets.broadcast('BlurApp', 'presence', entry);
+        cb();
+    },
+    afterUpdate: function(entry, cb) {
+        sails.log.verbose('A Presence was updated:', entry);
+        sails.sockets.broadcast('BlurApp', 'presence', entry);
+        cb();
+    }
   /*  types:{
         isTime:function(value){
             var d=new moment(value,'HH:mm:ss');

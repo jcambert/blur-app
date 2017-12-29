@@ -24,6 +24,12 @@ angular.module('ModelResource', ['sailsResource'])
     });
 }])
 
+.factory('Time',['$http',function($http){
+    var me = {};
+    me.now = function(){return $http.get('/now');}
+    return me;
+}])
+
 .factory('Employee', ['sailsResource', 'appConfig', function(res, appConfig) {
     return res('employee', {
         'lock': {

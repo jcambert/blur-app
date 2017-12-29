@@ -13,7 +13,8 @@
 module.exports = function(grunt) {
 
     grunt.config.set('clean', {
-        dev: ['.tmp/public/**'],
+        options: { force: true },
+        dev: ['.tmp/public/styles/**','.tmp/public/templates/**'],
         build: ['www'],
         sails: ['.tmp/public/js/dependencies/dist/sails.io.js'] //remove angular-resource-sails dependency
     });
