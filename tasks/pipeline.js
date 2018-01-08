@@ -51,7 +51,7 @@ var jsFilesToInject = [
     'js/dependencies/moment.js',
     'js/dependencies/rangy-core.js',
     'js/dependencies/rangy-*.js',
-
+    'linker/bower_components/angular-ui-clock/angular-clock.js',
     // Dependencies like jQuery, or Angular are brought in here
     'js/**/*.module.js',
     'js/**/*.provider.js',

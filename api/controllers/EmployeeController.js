@@ -25,44 +25,44 @@ module.exports = {
                 return res.badRequest(err);
             });
     },
-    bybadge:function(req,res){
+    bybadge: function(req, res) {
         var badge = req.params['badge'];
-        Employee.findOne({badge:badge})
-            .then(function(employee){
+        Employee.findOne({ badge: badge })
+            .then(function(employee) {
                 return res.json(employee);
             })
-            .catch(function(err){
+            .catch(function(err) {
                 return res.badRequest(err);
-            })
+            });
     },
-    withpresence:function(req,res){
-        var badge = req.params['badge'];
-        Employee.findOne({badge:badge}).populate('presences',{sort:'heureEntree desc',limit:5})
-            .then(function(employee){
-                return res.json(employee);
-            })
-            .catch(function(err){return res.badRequest(err);})
-    }
-   /* lock: function(req, res) {
-        if (req.isSocket && req.method == 'POST') {
+    withpresence: function(req, res) {
+            var badge = req.params.badge;
+            Employee.findOne({ badge: badge }).populate('presences', { sort: 'heureEntree desc', limit: 5 })
+                .then(function(employee) {
+                    return res.json(employee);
+                })
+                .catch(function(err) { return res.badRequest(err); });
+        }
+        /* lock: function(req, res) {
+             if (req.isSocket && req.method == 'POST') {
 
-            User.findOne({ id: req.session.passport.user }).exec(
-                function(err, user) {
-                    if (err) return res.badRequest();
-                    if (user == null) return res.badRequest();
-                    Employee.findOne({ id: id }).exec(function(err, entity) {
-                        if (err) return res.badRequest();
-                        entity.lock = true;
-                        entity.lockby = user.username;
-                        entity.save(function() {
-                            //model.publishUpdate(id, req);
-                            return res.ok();
-                        });
-                    });
-                }
-            );
-        } else
-            return res.badRequest();
+                 User.findOne({ id: req.session.passport.user }).exec(
+                     function(err, user) {
+                         if (err) return res.badRequest();
+                         if (user == null) return res.badRequest();
+                         Employee.findOne({ id: id }).exec(function(err, entity) {
+                             if (err) return res.badRequest();
+                             entity.lock = true;
+                             entity.lockby = user.username;
+                             entity.save(function() {
+                                 //model.publishUpdate(id, req);
+                                 return res.ok();
+                             });
+                         });
+                     }
+                 );
+             } else
+                 return res.badRequest();
 
-    }*/
+         }*/
 };

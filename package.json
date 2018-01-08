@@ -25,6 +25,7 @@
     "grunt-sails-linker": "~0.10.1",
     "grunt-sync": "0.2.4",
     "include-all": "~0.1.6",
+    "moment": "^2.20.1",
     "node-sass": "^4.5.3",
     "nodemailer": "^4.0.1",
     "object-assign": "^4.1.1",

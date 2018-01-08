@@ -14,19 +14,19 @@ angular.module('ModelResource', ['sailsResource'])
 
 
 .factory('Presence', ['sailsResource', function(res) {
-    return res('Presence',{
-        'byemployee':{
-            isArray:true,
-            method:'GET',
-            url:'/presence/employe/:employee',
-            params: {employee:'@employee'}
+    return res('Presence', {
+        'byemployee': {
+            isArray: true,
+            method: 'GET',
+            url: '/presence/employe/:employee',
+            params: { employee: '@employee' }
         }
     });
 }])
 
-.factory('Time',['$http',function($http){
+.factory('Time', ['$http', function($http) {
     var me = {};
-    me.now = function(){return $http.get('/now');}
+    me.now = function() { return $http.get('/now'); }
     return me;
 }])
 
@@ -56,10 +56,15 @@ angular.module('ModelResource', ['sailsResource'])
                 return ret;
             }
         },
-        'bybadge':{
-            method:'GET',
-            url:'/employee/badge/:badge',
-            params:{badge:'@badge'}
+        'bybadge': {
+            method: 'GET',
+            url: '/employee/badge/:badge',
+            params: { badge: '@badge' }
+        },
+        'withpresence': {
+            method: 'GET',
+            url: '/employeewithpresence/:badge',
+            params: { badge: '@badge' }
         }
     });
 }])
