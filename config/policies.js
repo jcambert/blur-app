@@ -79,6 +79,10 @@ module.exports.policies = {
     TimeController:{
         '*': true
     },
+    //Remove policy for test only
+    ArticleController:{
+        '*':true
+    },
     //permit anybody to create its user
     UserController: {
         create: true,

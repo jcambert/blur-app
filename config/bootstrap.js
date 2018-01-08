@@ -11,6 +11,7 @@
 
  //POST http://localhost:1337/auth/local?identifier=admin@example.com&password=admin1234
  //POST http://localhost:1337/presence/add/be4b0414-2d96-42cf-98c3-3288ad361ae4
+ global.erp = require('../api/core/index.js');
 
 function Seed(model) {
     model.seed();
@@ -19,6 +20,7 @@ function Seed(model) {
 var _ = require('lodash');
 
 module.exports.bootstrap = function(cb) {
+    erp.load();
    /* Object.prototype.bool = function() {
         if(_.isBoolean(this))return this;
         if(_.isString(this))
