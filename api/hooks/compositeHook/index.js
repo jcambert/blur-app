@@ -48,7 +48,7 @@ function createUniqueWith(model, field, key) {
         var composite = {};
         keys = [key].concat(field.uniqueWith.fields);
         var fieldName = keys.join('_');
-        composite[fieldName] = { type: 'string', required: true, unique: true };
+        composite[fieldName] = { type: 'string', primaryKey: true /* required: true, unique: true */ };
 
         _.defaults(model.attributes, composite);
 
@@ -94,7 +94,7 @@ function afterValidate(fieldName, fields, callback) {
     var monkey = function(model, cb) {
         _.forEach(fields, function(field) {
             sails.log.info(field);
-            if(_.isString(model[field]))
+            if (_.isString(model[field]))
                 model[field] = model[field].toUpperCase();
         });
         if (_.isFunction(callback)) {

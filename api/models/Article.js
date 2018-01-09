@@ -13,7 +13,7 @@ module.exports = {
             type: 'string',
             required: true,
             uniqueWith: {
-                fields: ['code',/* 'complementaire','depot'*/],
+                fields: ['code', /* 'complementaire','depot'*/ ],
                 uppercase: true
             }
         },
@@ -21,70 +21,81 @@ module.exports = {
             type: 'string',
             required: true
         },
-      /*  complementaire: {
-            type: 'string',
-            required: true
-        },
-        depot:{
-          model:'depot',
-          type:'string',
-          required:true,
-        },*/
+        /*  complementaire: {
+              type: 'string',
+              required: true
+          },
+          depot:{
+            model:'depot',
+            type:'string',
+            required:true,
+          },*/
         libelle: {
             type: 'string',
         },
-        type:{
-          model:'typearticle',
-          required:true
+        type: {
+            model: 'typearticle',
+            required: true
         },
-        stock:{
-          type:'float',
-          required:true,
-          defaultsTo:0.0
+        stock: {
+            type: 'float',
+            required: true,
+            defaultsTo: 0.0
         },
-        qteres:{
-          type:'float',
-          required:true,
-          defaultsTo:0.0
+        qteres: {
+            type: 'float',
+            required: true,
+            defaultsTo: 0.0
         },
-        qteatt:{
-          type:'float',
-          required:true,
-          defaultsTo:0.0,
+        qteatt: {
+            type: 'float',
+            required: true,
+            defaultsTo: 0.0,
         },
-        stockOff:{
-          type:'float',
-          required:true,
-          defaultsTo:0.0
+        stockOff: {
+            type: 'float',
+            required: true,
+            defaultsTo: 0.0
         },
-        stkmin:{
-          type:'float',
-          required:true,
-          defaultsTo:0.0
+        stkmin: {
+            type: 'float',
+            required: true,
+            defaultsTo: 0.0
         },
-        stkmax:{
-          type:'float',
-          required:true,
-          defaultsTo:0.0
+        stkmax: {
+            type: 'float',
+            required: true,
+            defaultsTo: 0.0
         },
         /*Mini appro*/
-        miniapp:{
-          type:'float',
-          required:true,
-          defaultsTo:0.0
+        miniapp: {
+            type: 'float',
+            required: true,
+            defaultsTo: 0.0
         },
         /* lot appro */
-        lotapp:{
-          type:'float',
-          required:true,
-          defaultsTo:0.0
+        lotapp: {
+            type: 'float',
+            required: true,
+            defaultsTo: 0.0
         },
-        valide:{
-          type:'boolean',
-          required:true,
-          defaultsTo:true
+        valide: {
+            type: 'boolean',
+            required: true,
+            defaultsTo: true
+        },
+        nomenclatures: {
+            collection: 'nomenclature',
+            via: 'article'
+        },
+        casemploi: {
+            collection: 'nomenclature',
+            via: 'composant'
         }
     },
-    checkSocieteExist:true,
-    seedData:[{societe:'001',code:'LASER',libelle:'Laser Bystronic',type:'MO'}]
+    checkSocieteExist: true,
+    seedData: [{ societe: '001', code: 'LASER', libelle: 'Laser Bystronic', type: 'MO' },
+        { societe: '001', code: '1234', libelle: 'libelle 1234', type: 'PF' },
+        { societe: '001', code: '5678', libelle: 'libelle 5678', type: 'SF' },
+    ]
 };
