@@ -13,7 +13,7 @@ module.exports = {
             type: 'string',
             required: true,
             uniqueWith: {
-                fields: ['code', 'complementaire','depot'],
+                fields: ['code',/* 'complementaire','depot'*/],
                 uppercase: true
             }
         },
@@ -21,7 +21,7 @@ module.exports = {
             type: 'string',
             required: true
         },
-        complementaire: {
+      /*  complementaire: {
             type: 'string',
             required: true
         },
@@ -29,7 +29,7 @@ module.exports = {
           model:'depot',
           type:'string',
           required:true,
-        },
+        },*/
         libelle: {
             type: 'string',
         },
@@ -86,5 +86,5 @@ module.exports = {
         }
     },
     checkSocieteExist:true,
-
+    seedData:[{societe:'001',code:'LASER',libelle:'Laser Bystronic',type:'MO'}]
 };

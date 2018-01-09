@@ -39,9 +39,9 @@ function beforeCreate(model, callback) {
 
     var monkey = function(model, cb) {
         
-        Societe.findOne({code:model.societe}).populate('depots',{code:model.depot}).exec(function(err,societe){
+        Societe.findOne({code:model.societe})/*.populate('depots',{code:model.depot})*/.exec(function(err,societe){
             if(err) return cb(err);
-            if(_.isUndefined(societe) || societe.depots.length==0)return cb(new Error("La societe "+model.societe + " avec le depot "+model.depot+" n'existe pas"));
+            if(_.isUndefined(societe) /*|| societe.depots.length==0*/)return cb(new Error("La societe "+model.societe /*+ " avec le depot "+model.depot*/+" n'existe pas"));
             if (_.isFunction(callback)) {
                 callback(model, cb);
             } else {

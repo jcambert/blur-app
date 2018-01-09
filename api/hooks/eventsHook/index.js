@@ -60,7 +60,7 @@ function setupEvent(emitter, event) {
     changes = changes instanceof Array ? changes : [changes]
 
     for (const change of changes) {
-      sails.log.info(event,change);
+      //sails.log.info(event,change);
       emitter.emit(event, change);
       sails.sockets.broadcast(erp.name,event,change);
     }

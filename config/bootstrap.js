@@ -34,10 +34,12 @@ module.exports.bootstrap = function(cb) {
     // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
     async.series([
         Societe.seed,
-        Employee.seed,
-        Presence.seed,
-        Permission.seed,
-        Role.seed,
+        Typearticle.seed,
+        Article.seed,
+        //Employee.seed,
+        //Presence.seed,
+        //Permission.seed,
+        //Role.seed,
     ], cb);
     //  async.each([Employee], Seed, cb);
     //  cb();
