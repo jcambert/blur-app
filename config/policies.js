@@ -80,9 +80,22 @@ module.exports.policies = {
         '*': true
     },
     //Remove policy for test only
+    SocieteController:{
+        '*':true
+    },
+    DepotController:{
+        '*':true
+    },
     ArticleController:{
         '*':true
     },
+    TypearticleController:{
+        '*':true
+    },
+    NomenclatureController:{
+        '*':true
+    },
+
     //permit anybody to create its user
     UserController: {
         create: true,

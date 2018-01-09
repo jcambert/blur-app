@@ -94,7 +94,8 @@ function afterValidate(fieldName, fields, callback) {
     var monkey = function(model, cb) {
         _.forEach(fields, function(field) {
             sails.log.info(field);
-            model[field] = model[field].toUpperCase();
+            if(_.isString(model[field]))
+                model[field] = model[field].toUpperCase();
         });
         if (_.isFunction(callback)) {
             callback(model, cb);

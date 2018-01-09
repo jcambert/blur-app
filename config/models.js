@@ -28,7 +28,7 @@ module.exports.models = {
      *                                                                          *
      ***************************************************************************/
     migrate: 'drop',
-
+    schema:false,
     seed: function(callback) {
         var self = this;
         var modelName = self.adapter.identity.charAt(0).toUpperCase() + self.adapter.identity.slice(1);
