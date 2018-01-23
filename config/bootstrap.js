@@ -32,11 +32,22 @@ module.exports.bootstrap = function(cb) {
 
     // It's very important to trigger this callback method when you are finished
     // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+    /*var models=[Societe,Typearticle,Typetiers,Article];
+    for (var i = 0, len = models.length; i < len; i++) {
+        models[i].seed();
+      }
+    //_.forEach([Societe,Typearticle,Typetiers],function(model){model.seed()});
+    cb();*/
     async.series([
+        Matiere.seed,
         Societe.seed,
         Typearticle.seed,
+        Typetiers.seed,
+        Tiers.seed,
         Article.seed,
-        Nomenclature.seed
+        Nomenclature.seed,
+        Commande.seed,
+        Lignecommande.seed
         //Employee.seed,
         //Presence.seed,
         //Permission.seed,

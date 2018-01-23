@@ -56,7 +56,7 @@ function createUniqueWith(model, field, key) {
 
 
         if (field.uniqueWith.uppercase) {
-            sails.log.info('Has field uppercase');
+           // sails.log.info('Has field uppercase');
             model.afterValidate = afterValidate(fieldName, keys, model['afterValidate']);
         }
 
@@ -70,15 +70,15 @@ function createUniqueWith(model, field, key) {
 function beforeValidate(fieldName, fields, callback) {
 
     var monkey = function(model, cb) {
-        sails.log.info(fieldName);
+        //sails.log.info(fieldName);
         var composites = [];
         _.forEach(fields, function(field) {
             sails.log.info(model[field]);
             composites.push(model[field]);
         });
-        sails.log.info(composites);
+        //sails.log.info(composites);
         model[fieldName] = composites.join(':');
-        sails.log.info(model[fieldName]);
+        //sails.log.info(model[fieldName]);
         if (_.isFunction(callback)) {
             callback(model, cb);
         } else {
@@ -93,7 +93,7 @@ function beforeValidate(fieldName, fields, callback) {
 function afterValidate(fieldName, fields, callback) {
     var monkey = function(model, cb) {
         _.forEach(fields, function(field) {
-            sails.log.info(field);
+            //sails.log.info(field);
             if (_.isString(model[field]))
                 model[field] = model[field].toUpperCase();
         });

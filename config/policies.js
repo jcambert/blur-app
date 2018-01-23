@@ -92,6 +92,21 @@ module.exports.policies = {
     TypearticleController:{
         '*':true
     },
+    TypetiersController:{
+        '*':true
+    },
+    TiersController:{
+        '*':true
+    },
+    CommandeController:{
+        '*':true
+    },
+    LignecommandeController:{
+        '*':true
+    },
+    BesoinController:{
+        '*':true
+    },
     NomenclatureController:{
         '*':true
     },

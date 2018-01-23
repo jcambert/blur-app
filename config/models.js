@@ -55,6 +55,22 @@ module.exports.models = {
     seedArray: function(callback) {
         var self = this;
         var modelName = self.adapter.identity.charAt(0).toUpperCase() + self.adapter.identity.slice(1);
+        erp.info('start seeding '+modelName);
+       /* _.forEach(self.seedData,function(data){
+            var _err=[];
+            self.create(data).exec(function(err,result){
+                if (err) {
+                    sails.log.debug(err);
+                   _err.push(err)
+                } else {
+                    sails.log.debug(modelName + ' seed done');
+                }
+
+            });
+            
+        });
+        if (_.isFunction(callback))
+            callback();*/
         self.createEach(self.seedData).exec(function(err, results) {
             if (err) {
                 sails.log.debug(err);

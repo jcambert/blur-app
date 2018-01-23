@@ -12,13 +12,15 @@ erp.load = function load() {
         erp.emit('erp:ready');
      });
     // require all Erp dependencies
-    //erp.user = require('./user/index.js');
+    erp.besoin = require('./besoin/index.js');
     //erp.useractivity = require('./useractivity/index.js');
     //erp.response = require('./response/index.js');
     //erp.client = require('./client/index.js');
     //erp.dp = require('./dp/index.js');
     //erp.locale = require('./locale/index.js');
-    
+    erp.config = require('./config/index.js');
+    erp.article = require('./article/index.js');
+    erp.commande = require('./commande/index.js');
     // get Erp version number
     try {
         var json = JSON.parse(fs.readFileSync('package.json'));

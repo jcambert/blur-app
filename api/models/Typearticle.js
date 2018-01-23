@@ -5,22 +5,33 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
+var config = require('../core/config/index.js');
 module.exports = {
 
   attributes: {
     code:{
       primaryKey: true,
       type:'string',
-      enum:['PF','SF','CO','MP','TO','PR','LI','MO','CH','ST']
+      //enum: config.typeArticle()
+    },
+    name:{
+      type:'string',
+      required:true,
+    },
+    parent:{
+      model:'typearticle',
+    },
+    childs:{
+      collection:'typearticle',
+      via:'parent'
     },
     description:{
       type:'string'
+    },
+    fields:{
+      type:'array'
     }
   },
-  seedData:[{code:'PF',description:'Produit Fini'},
-    {code:'SF',description:'Produit semi-fini'},
-    {code:'CO',description:'Composant'},
-    {code:'MP',description:'Matière première'},
-    {code:'MO',description:'Main Oeuvre'}]
+  seedData:config.typeArticleWithDescription()
 };
 

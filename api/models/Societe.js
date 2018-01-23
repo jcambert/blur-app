@@ -62,12 +62,12 @@ module.exports = {
     web:{
       type:'string'
     }, 
-    depots:{
+ /*  depots:{
       collection:'depot',
       via:'societe'
-    }
+    }*/
 
   },
-  seedData: [{code: '001 ', nom: 'atf industrie', depots:[{code:"01",nom:"depot principal"}] }],
+  seedData: [{code: '001 ', nom: 'atf industrie'/*, depots:[{code:"01",nom:"depot principal"}] */}],
 };
 
