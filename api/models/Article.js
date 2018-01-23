@@ -5,7 +5,7 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 var _ = require('lodash');
-var coreArticle = require('../core/article/index.js');
+var coreArticle = require('../core/article/index.js')();
 module.exports = {
 
     attributes: {
@@ -38,9 +38,9 @@ module.exports = {
             model: 'typearticle',
             required: true
         },
-        stype:{
-            model:'typearticle',
-            soustype:true
+        stype: {
+            model: 'typearticle',
+            soustype: true
         },
         stock: {
             type: 'float',
@@ -97,47 +97,48 @@ module.exports = {
             collection: 'nomenclature',
             via: 'composant'
         },
-        commandes:{
-            collection:'lignecommande',
-            via:'article'
+        commandes: {
+            collection: 'lignecommande',
+            via: 'article'
         },
-        matiere:{
-            model:'matiere',
+        matiere: {
+            model: 'matiere',
         },
-        longueur:{
-            type:'float'
+        longueur: {
+            type: 'float'
         },
-        largeur:{
-            type:'float'
+        largeur: {
+            type: 'float'
         },
-        poids:{
-            type:'float'
+        poids: {
+            type: 'float'
         },
-        epaisseur:{
-            type:'float'
+        epaisseur: {
+            type: 'float'
         },
-        correspondance:{ //Correspodance pour des recherches (matieres,...) .....
-          type:'json'
+        correspondance: { //Correspodance pour des recherches (matieres,...) .....
+            type: 'json'
         },
-        
-        toJSON:function(){
+
+        toJSON: function() {
             var o = this.toObject();
-            o.estProduitFini = coreArticle.est('fini','type',o);
-            o.estProduitSemiFini = coreArticle.est('semifini','type',o);
-            o.estTole = coreArticle.est('tole','stype',o);
+            o.estProduitFini = coreArticle.est('fini', 'type', o);
+            o.estProduitSemiFini = coreArticle.est('semifini', 'type', o);
+            o.estTole = coreArticle.est('tole', 'stype', o);
             return o;
         }
     },
     checkSocieteExist: true,
-    types:{
-        soustype:function(article){
-            return coreArticle.estSousTypeValide(article);
+    types: {
+        soustype: function(article) {
+            return true;
+            //return coreArticle.estSousTypeValide(article);
         }
     },
     seedData: [{ societe: '001', code: 'LASER', libelle: 'Laser Bystronic', type: 'MO' },
         { societe: '001', code: '1234', libelle: 'libelle 1234', type: 'PF' },
         { societe: '001', code: '5678', libelle: 'libelle 5678', type: 'PF' },
-        { societe: '001', code: '91011', libelle: 'libelle 901011', type: 'SF' },,
-        { societe: '001', code: 'XC10-1.0GRA', libelle: 'Acier ep1 grand format', type: 'MP',stype:'TO' },
+        { societe: '001', code: '91011', libelle: 'libelle 901011', type: 'SF' },
+        { societe: '001', code: 'XC10-1.0GRA', libelle: 'Acier ep1 grand format', type: 'MP', stype: 'TO' },
     ]
 };
