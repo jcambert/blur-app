@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-    nom:{
+    code:{
       type:'string',
       primaryKey: true,
       required: true
@@ -18,6 +18,6 @@ module.exports = {
       required:true
     }
   },
-  seedData:[{nom:'acier',densite:8},{nom:'inox',densite:8},{nom:'aluminium',densite:3}]
+  seedData:[{code:'acier',densite:8},{code:'inox',densite:8},{code:'aluminium',densite:3}]
 };
 

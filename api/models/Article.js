@@ -121,12 +121,29 @@ module.exports = {
         },
 
         toJSON: function() {
-            var o = this.toObject();
-            o.estProduitFini = coreArticle.est('fini', 'type', o);
-            o.estProduitSemiFini = coreArticle.est('semifini', 'type', o);
-            o.estTole = coreArticle.est('tole', 'stype', o);
-            return o;
+            return coreArticle.addExtraFields(this.toObject());
+            
         }
+    },
+    beforeCreate:function(article,next){
+        sails.log.debug('article beforeCreate');
+        return coreArticle.checkConsistency(article)
+            .then(function(article){
+                next();
+            })
+            .catch(function(err){
+                next(err);
+            });
+    },
+    beforeUpdate:function(article,next){
+        sails.log.debug('article beforeUpdate');
+        return coreArticle.checkConsistency(article)
+            .then(function(article){
+                next();
+            })
+            .catch(function(err){
+                next(err);
+            });
     },
     checkSocieteExist: true,
     types: {
@@ -139,6 +156,10 @@ module.exports = {
         { societe: '001', code: '1234', libelle: 'libelle 1234', type: 'PF' },
         { societe: '001', code: '5678', libelle: 'libelle 5678', type: 'PF' },
         { societe: '001', code: '91011', libelle: 'libelle 901011', type: 'SF' },
-        { societe: '001', code: 'XC10-1.0GRA', libelle: 'Acier ep1 grand format', type: 'MP', stype: 'TO' },
+        { societe: '001', code: 'XC10-1.0GRA', libelle: 'Acier ep1 grand format', type: 'MP', stype: 'TO',longueur:3000,largeur:1500,epaisseur:3,matiere:'acier' },
+       // { societe: '001', code: 'XC10-1.0PET', libelle: 'Acier ep1 grand format', type: 'PF', stype: 'TO' },
+       {societe:'001',code:'IPE80',libelle:'IPE 80',type:'MP',stype:'PR',matiere:'acier',poids:6.2},
+       {societe:'001',code:'TU30x2AC',libelle:'tube Ø30 ep2',type:'MP',stype:'TU',matiere:'acier',longueur:30,epaisseur:2}
     ]
 };
+

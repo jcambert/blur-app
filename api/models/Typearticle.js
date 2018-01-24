@@ -5,7 +5,7 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
-var config = require('../core/config/index.js');
+var config = require('../core/config/index.js')();
 module.exports = {
 
   attributes: {
