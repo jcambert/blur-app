@@ -4,15 +4,17 @@ module.exports = function(){
     var config={
         typeArticleFini:['PF'],
         typeArticleSemifini:['SF'],
-        
+        typeArticleLibelle:['LI'],
         typeArticleMatierePremiere:['MP'],
-        
+        typeArticleFantome:['FA'],
         typeArticleMainOeuvre:['MO'],
         typeArticleInterne:['LI','CH'],
         
         typeArticleWithDescription:function(){
             return [{code:'PF',name:'fini',description:'Produit Fini'},
             {code:'SF',name:'semifini',description:'Produit semi-fini'},
+            {code:'LI',name:'libelle',description:'Libellé'},
+            {code:'FA',name:'fantome',description:"Fantome"},
             {code:'CO',name:'composant',description:'Composant'},
             {code:'MP',name:'matiere',description:'Matière première'},
             {code:'MO',name:'mainoeuvre',description:'Main Oeuvre'},
@@ -27,6 +29,8 @@ module.exports = function(){
     };
     config.typeArticleFabrique=[].concat(config.typeArticleFini,config.typeArticleSemifini);
     config.typeArticleAchete=['CO','ST'].concat(config.typeArticleMatierePremiere);
+
+    //TODO take all typeArticleWithDescription.code
     config.typeArticle= [].concat(config.typeArticleFabrique,config.typeArticleAchete,config.typeArticleInterne,config.typeArticleMainOeuvre);
     return config;
 

@@ -108,7 +108,8 @@ module.exports.routes = {
     'GET /employeewithpresence/:badge' : 'EmployeeController.withpresence',
     'GET /presence/employe/:employee' : 'PresenceController.findByEmployee',
     //'POST /presence/add/:id' : 'PresenceController.add',
-    'GET /now' : 'TimeController.now'
+    'GET /now' : 'TimeController.now',
+    'POST /configurateur' :'ConfigurateurController.create',
     
 
     /***************************************************************************
