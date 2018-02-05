@@ -29,6 +29,7 @@ erp.load = function load() {
         erp.description = json.description;
         erp.author = json.author;
         erp.info = sails.log.info;
+        erp.debug = sails.log.debug;
         erp.error = sails.log.error;
         erp.warn = sails.log.warn;
 

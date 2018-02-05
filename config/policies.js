@@ -110,6 +110,9 @@ module.exports.policies = {
     NomenclatureController:{
         '*':true
     },
+    ConfigurateurController:{
+        '*':true
+    },
 
     //permit anybody to create its user
     UserController: {

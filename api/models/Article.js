@@ -119,7 +119,15 @@ module.exports = {
         correspondance: { //Correspodance pour des recherches (matieres,...) .....
             type: 'json'
         },
-
+        configuration:{
+            type:'json' 
+            /* EXEMPLE
+            {"LUNA":[{"text":"Ventilateur","code":"VENTILATEUR LUNA","type":"boolean",price:200.0},{"text":"Type de porte","choices":[{"text":"Porte Acier","code":"PORTE-LUNA-ACIER",price:87.0},{"text":"Porte Verre","code":"PORTE-LUNA-VERRE",price:243.55}]},{"text":"Type de flan","choices":[{"text":"flan acier","code":"FINITION-LUNA-ACIER","choices":[{"text":"Couleur Blanc","code":"LUNA-PEINTURE-PU-BLANC"},{"text":"Couleur Rouge","code":"LUNA-PEINTURE-PU-ROUGE"}]},{"text":"flan ceramique","code":"FINITION-LUNA-CERAMIQUE",price:150.52,"choices":[{"text":"Couleur Blanc","code":"LUNA-CERAMIQUE-BLANC"},{"text":"Couleur Taupe","code":"LUNA-CERAMIQUE-TAUPE"}]}]}]}
+            */
+        },
+        tarif:{
+            type:'float'
+        },
         toJSON: function() {
             return coreArticle.addExtraFields(this.toObject());
             
@@ -172,10 +180,9 @@ module.exports = {
        {societe:'001',code:'PEINTURE-PU-BLANC',libelle:'Penture Ht Pu Blanc',type:'FA',qtesto:10},
        {societe:'001',code:'PEINTURE-PU-TAUPE',libelle:'Penture Ht Pu taupe',type:'FA',qtesto:12},
        {societe:'001',code:'PEINTURE-PU-ROUGE',libelle:'Penture Ht Pu rouge',type:'FA',qtesto:22},
+       {societe:'001',code:'LUNA',libelle:'Base Luna',tarif:300.0,type:'PF',qtesto:15,configuration:{"LUNA":[{"text":"Ventilateur","code":"VENTILATEUR LUNA","type":"boolean",price:200.0},{"text":"Type de porte","choices":[{"text":"Porte Acier","code":"PORTE-LUNA-ACIER",price:87.0},{"text":"Porte Verre","code":"PORTE-LUNA-VERRE",price:243.55}]},{"text":"Type de flan","choices":[{"text":"flan acier","code":"FINITION-LUNA-ACIER","choices":[{"text":"Couleur Blanc","code":"LUNA-PEINTURE-PU-BLANC"},{"text":"Couleur Rouge","code":"LUNA-PEINTURE-PU-ROUGE"}]},{"text":"flan ceramique","code":"FINITION-LUNA-CERAMIQUE",price:150.52,"choices":[{"text":"Couleur Blanc","code":"LUNA-CERAMIQUE-BLANC"},{"text":"Couleur Taupe","code":"LUNA-CERAMIQUE-TAUPE"}]}]}]}}
 
     ]
 };
 
-/*
-{"LUNA":{ "VENTILATEUR-LUNA":[true,false],"FINITION-LUNA":{"FINITION-LUNA-ACIER":{"COULEUR":["PEINTURE-PU-BLANC","PEINTURE-PU-TAUPE","PEINTURE-PU-ROUGE"],"PORTE-LUNA":["PORTE-LUNA-VERRE","PORTE-LUNA-ACIER"]},"FINITION-LUNA-CERAMIQUE":{"COULEUR":["PEINTURE-PU-BLANC","PEINTURE-PU-TAUPE","PEINTURE-PU-ROUGE"]}}}}
-*/
+
